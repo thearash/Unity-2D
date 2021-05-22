@@ -16,6 +16,9 @@ public class Bird : MonoBehaviour
 
     private void Update()
     {
+        GetComponent<LineRenderer>().SetPosition(0, _initialPosition);
+        GetComponent<LineRenderer>().SetPosition(1, transform.position);
+
         if (_birdWasLaunched &&
             GetComponent<Rigidbody2D>().velocity.magnitude <= 0.1)
         {
@@ -36,6 +39,7 @@ public class Bird : MonoBehaviour
     private void OnMouseDown()
     {
         GetComponent<SpriteRenderer>().color = Color.red;
+        GetComponent<LineRenderer>().enabled = true;
     }
 
     private void OnMouseUp()
@@ -47,6 +51,9 @@ public class Bird : MonoBehaviour
         GetComponent<Rigidbody2D>().AddForce(directionToInitialPosition * _launchPower);
         GetComponent<Rigidbody2D>().gravityScale = 1;
         _birdWasLaunched = true;
+
+        GetComponent<LineRenderer>().enabled = false;
+
     }
 
     private void OnMouseDrag()
