@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class Bird : MonoBehaviour
 {
     private Vector3 _initialPosition;
